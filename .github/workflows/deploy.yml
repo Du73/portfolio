@@ -21,18 +21,24 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            # 1. Định nghĩa đường dẫn tuyệt đối
             TARGET_DIR="/home/huan1/portfolio"
             
-            # 2. Nếu thư mục chưa tồn tại, thực hiện clone mới
+            # Nếu thư mục đã tồn tại nhưng không phải là repo git (do lỗi trước đó)
+            # thì xóa đi để clone lại từ đầu
+            if [ -d "$TARGET_DIR" ] && [ ! -d "$TARGET_DIR/.git" ]; then
+              echo "Dọn dẹp thư mục lỗi..."
+              rm -rf "$TARGET_DIR"
+            fi
+
+            # Clone nếu chưa có, hoặc Pull nếu đã có
             if [ ! -d "$TARGET_DIR" ]; then
-              echo "Thư mục không tồn tại. Đang clone mới..."
+              echo "Đang clone mới dự án..."
               git clone https://github.com/Du73/portfolio.git "$TARGET_DIR"
+            else
+              echo "Cập nhật mã nguồn..."
+              cd "$TARGET_DIR" && git pull origin main
             fi
             
-            # 3. Vào thư mục và cập nhật code
+            # Sau khi đảm bảo code đã có, mới chạy docker
             cd "$TARGET_DIR"
-            git pull origin main
-            
-            # 4. Build và chạy Docker containers
             sudo docker compose up -d --build
