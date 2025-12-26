@@ -31,12 +31,14 @@ export default async function Post({ params }: Props) {
       
       <h1 className="text-3xl md:text-4xl font-bold mb-4">{postData.title}</h1>
       
-      <div className="flex items-center text-gray-500 text-sm mb-8 space-x-4">
-        <time>{postData.date}</time>
-        <span>•</span>
-        <div className="flex gap-2">
+      <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm mb-8 space-x-4">
+        <time className="font-medium">{postData.date}</time>
+        <span className="text-gray-400 dark:text-gray-600">•</span>
+        <div className="flex gap-2 flex-wrap">
             {postData.tags?.map((tag: string) => (
-              <span key={tag} className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">#{tag}</span>
+              <span key={tag} className="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-xs font-medium text-gray-700 dark:text-gray-300">
+                #{tag}
+              </span>
             ))}
         </div>
       </div>

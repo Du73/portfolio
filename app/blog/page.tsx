@@ -1,28 +1,25 @@
 import Link from 'next/link';
 import { getSortedPostsData } from '@/lib/posts';
+import BlogFilter from '@/components/BlogFilter';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog - Java & JavaScript Network Programming',
+  description: 'Blog về lập trình mạng với Java và JavaScript. Chia sẻ kiến thức về Socket Programming, RESTful API, WebSocket, và nhiều chủ đề khác.',
+};
 
 export default function Blog() {
   const allPostsData = getSortedPostsData();
+  const allTags = Array.from(new Set(allPostsData.flatMap(post => post.tags || [])));
 
   return (
     <div className="space-y-8">
       <h1 className="text-3xl font-bold">Blog</h1>
-      <div className="space-y-6">
-        {allPostsData.map(({ id, date, title, description, tags }) => (
-          <div key={id} className="block group border-b border-gray-100 dark:border-gray-800 pb-6 last:border-0">
-            <p className="text-sm text-gray-500 mb-1">{date}</p>
-            <Link href={`/blog/${id}`}>
-              <h2 className="text-xl font-bold group-hover:text-blue-600 transition mb-2">{title}</h2>
-            </Link>
-            <p className="text-gray-600 dark:text-gray-400 mb-3">{description}</p>
-            <div className="flex gap-2">
-                {tags?.map(tag => (
-                   <span key={tag} className="text-xs text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">#{tag}</span>
-                ))}
-            </div>
-          </div>
-        ))}
-      </div>
+      <p className="text-gray-600 dark:text-gray-300">
+        Chia sẻ kiến thức về lập trình mạng với Java & JavaScript
+      </p>
+      
+      <BlogFilter posts={allPostsData} allTags={allTags} />
     </div>
   );
 }

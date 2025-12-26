@@ -6,8 +6,12 @@ export default function Footer() {
           © {new Date().getFullYear()} DevOps Portfolio. Built with Next.js & Tailwind.
         </p>
         <div className="mt-2 flex justify-center space-x-4">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">GitHub</a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">LinkedIn</a>
+          <a href="https://github.com/Du73" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition">
+            GitHub
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition">
+            LinkedIn
+          </a>
         </div>
       </div>
     </footer>

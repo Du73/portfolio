@@ -1,19 +1,25 @@
 import { Github, ExternalLink } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Projects - Portfolio',
+  description: 'Các dự án DevOps và lập trình mạng của tôi',
+};
 
 const projects = [
   {
-    title: "Rental Room Management System (DevOps)",
-    description: "Deployed a full-stack Flutter & .NET Core application. Setup CI/CD pipeline using GitHub Actions to build Docker images and deploy to an AWS EC2 instance. Configured Nginx as a Reverse Proxy.",
-    tags: ["Docker", "GitHub Actions", "AWS", "Nginx", ".NET Core"],
-    github: "https://github.com/yourusername/project1",
-    demo: "#"
+    title: "Portfolio Website (DevOps)",
+    description: "Deployed a website Next.js & Tailwind CSS application. Setup CI/CD pipeline using GitHub Actions to build Docker images and deploy to an AWS EC2 instance. Configured Nginx as a Reverse Proxy.",
+    tags: ["Docker", "GitHub Actions", "AWS", "Nginx", "Next.js", "Tailwind CSS"],
+    github: "https://github.com/Du73/portfolio.git",
+    demo: "https://portfolio.huan1.id.vn"
   },
   {
     title: "Automated K8s Cluster on Local",
     description: "Provisioned a local Kubernetes cluster using Vagrant and Ansible. Implemented monitoring with Prometheus and Grafana dashboards.",
     tags: ["Kubernetes", "Ansible", "Vagrant", "Monitoring"],
-    github: "https://github.com/yourusername/project2",
-    demo: "#"
+    github: "https://github.com/Du73",
+    demo: null
   }
 ];
 
@@ -27,8 +33,26 @@ export default function Projects() {
             <div className="flex justify-between items-start">
               <h2 className="text-xl font-bold mb-2">{project.title}</h2>
               <div className="flex space-x-2">
-                <a href={project.github} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"><Github size={20} /></a>
-                <a href={project.demo} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"><ExternalLink size={20} /></a>
+                <a 
+                  href={project.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition"
+                  aria-label="GitHub Repository"
+                >
+                  <Github size={20} />
+                </a>
+                {project.demo && (
+                  <a 
+                    href={project.demo} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition"
+                    aria-label="Live Demo"
+                  >
+                    <ExternalLink size={20} />
+                  </a>
+                )}
               </div>
             </div>
             <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>

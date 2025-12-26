@@ -3,7 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
-import html from 'remark-html';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
@@ -43,10 +44,29 @@ export async function getPostData(id: string): Promise<PostData> {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const matterResult = matter(fileContents);
 
+  // Extract language info from markdown code blocks before processing
+  // This regex finds ```language and preserves it
+  let processedMarkdown = matterResult.content;
+
+  // Use remark-rehype to convert markdown to HTML with proper code block handling
+  // This preserves language information from fenced code blocks (```java)
   const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeStringify, { allowDangerousHtml: true })
+    .process(processedMarkdown);
+  
+  let contentHtml = processedContent.toString();
+
+  // Post-process: Ensure code blocks have language classes for Prism.js
+  // rehype should automatically add language-* classes, but we'll verify and fix if needed
+  
+  // Add language classes to code blocks that don't have them
+  contentHtml = contentHtml.replace(
+    /<pre><code(?!\s+class="language-)([^>]*)>([\s\S]*?)<\/code><\/pre>/g,
+    (match, attrs, code) => {
+      return `<pre><code class="language-text"${attrs || ''}>${code}</code></pre>`;
+    }
+  );
 
   return {
     id,
