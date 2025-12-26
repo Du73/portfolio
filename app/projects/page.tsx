@@ -20,6 +20,20 @@ const projects = [
     tags: ["Kubernetes", "Ansible", "Vagrant", "Monitoring"],
     github: "https://github.com/Du73",
     demo: null
+  },
+  {
+    title: "AWS Infrastructure as Code with Terraform",
+    description: "Automated AWS infrastructure provisioning using Terraform. Created reusable modules for VPC, EC2, RDS, S3, and security groups. Implemented state management and remote backend with S3.",
+    tags: ["Terraform", "AWS", "Infrastructure as Code", "Cloud"],
+    github: "https://github.com/Du73",
+    demo: null
+  },
+  {
+    title: "CI/CD Pipeline with Jenkins & Docker",
+    description: "Built a complete CI/CD pipeline using Jenkins for a web application. Automated build, test, and deployment process with Docker containers. Integrated GitHub webhooks for automatic triggering on code commits.",
+    tags: ["Jenkins", "CI/CD", "Docker", "Automation", "GitHub"],
+    github: "https://github.com/Du73",
+    demo: null
   }
 ];
 

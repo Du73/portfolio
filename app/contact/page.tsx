@@ -9,21 +9,20 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <div className="max-w-2xl mx-auto space-y-8">
-      <h1 className="text-3xl font-bold">Liên hệ</h1>
+      <h1 className="text-3xl font-bold">CONTACT</h1>
       <p className="text-gray-600 dark:text-gray-300">
-        Bạn muốn hợp tác hoặc có câu hỏi về DevOps? 
-        Hãy liên hệ với tôi.
+      "I am currently open to new opportunities. If you think I'd be a good fit for your team, please get in touch."
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
         <div className="space-y-4">
           <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
             <Mail className="h-5 w-5 text-blue-600" />
-            <span>your.email@example.com</span>
+            <span>nguyenkhanhhuan2004@gmail.com</span>
           </div>
           <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
             <Phone className="h-5 w-5 text-blue-600" />
-            <span>+84 123 456 789</span>
+            <span>+84 325 722 155</span>
           </div>
           <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
             <MapPin className="h-5 w-5 text-blue-600" />
@@ -38,7 +37,7 @@ export default function Contact() {
               type="email" 
               id="email" 
               className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-slate-900"
-              placeholder="your@email.com"
+              placeholder="youremail@.com"
               required
             />
           </div>
@@ -53,7 +52,7 @@ export default function Contact() {
             ></textarea>
           </div>
           <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-            Gửi tin nhắn
+            Send Message
           </button>
         </form>
       </div>

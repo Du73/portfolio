@@ -8,13 +8,13 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <div className="space-y-8">
-      <h1 className="text-3xl font-bold">Giới thiệu</h1>
+      <h1 className="text-3xl font-bold">INTRODUCTION</h1>
       <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-        Tôi là sinh viên năm cuối chuyên ngành Software Technology. Tôi tập trung vào việc tạo infrastructure đáng tin cậy, có thể mở rộng và tự động hóa quy trình triển khai để cải thiện năng suất của developer.
+        "I am a final-year student at HCM University of Technology(HUTECH). I am passionate about automation, cloud computing, and containerization. Focusing on Infrastructure as Code and Automation. Dedicated to building scalable systems that maximize reliability and developer efficiency"
       </p>
 
       <div className="mt-8">
-        <h2 className="text-2xl font-bold mb-4">Kỹ năng kỹ thuật</h2>
+        <h2 className="text-2xl font-bold mb-4">SKILLS</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="p-4 bg-gray-50 dark:bg-slate-900 rounded-lg">
             <h3 className="font-semibold text-blue-600 mb-2">Cloud & Infrastructure</h3>
@@ -36,7 +36,7 @@ export default function About() {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-2xl font-bold mb-4">Chứng chỉ</h2>
+        <h2 className="text-2xl font-bold mb-4">Certifications</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="p-4 bg-gray-50 dark:bg-slate-900 rounded-lg border-l-4 border-blue-600">
             <h3 className="font-semibold text-blue-600 mb-2">AWS Foundation</h3>
@@ -62,7 +62,7 @@ export default function About() {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-2xl font-bold mb-4">Liên hệ</h2>
+        <h2 className="text-2xl font-bold mb-4">CONTACT</h2>
         <div className="space-y-3 p-4 bg-gray-50 dark:bg-slate-900 rounded-lg">
           <p className="text-gray-600 dark:text-gray-300">
             <strong className="text-gray-900 dark:text-gray-100">Email:</strong>{' '}
@@ -89,7 +89,7 @@ export default function About() {
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline dark:text-blue-400"
             >
-              portfolio.huan1.id.vn
+              linkedin.com/in/huan-khanh-4532aa313
             </a>
           </p>
         </div>
