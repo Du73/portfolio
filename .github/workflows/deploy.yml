@@ -27,7 +27,7 @@ jobs:
             # thì xóa đi để clone lại từ đầu
             if [ -d "$TARGET_DIR" ] && [ ! -d "$TARGET_DIR/.git" ]; then
               echo "Dọn dẹp thư mục lỗi..."
-              rm -rf "$TARGET_DIR"
+              sudo rm -rf "$TARGET_DIR"
             fi
 
             # Clone nếu chưa có, hoặc Pull nếu đã có
