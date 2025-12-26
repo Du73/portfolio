@@ -3,7 +3,7 @@ name: Deploy Portfolio to AWS
 on:
   push:
     branches:
-      - main  # Tự động chạy khi bạn push code vào nhánh main
+      - main # Tự động chạy khi push code vào nhánh main
 
 jobs:
   deploy:
@@ -11,9 +11,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Executing remote ssh commands using password
+      - name: Deploy to AWS EC2 via SSH
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -21,14 +21,18 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            # Di chuyển vào thư mục dự án trên VPS
-            cd /home/huan1/portfolio  # Sửa đúng đường dẫn folder của bạn
+            # 1. Định nghĩa đường dẫn tuyệt đối
+            TARGET_DIR="/home/huan1/portfolio"
             
-            # Kéo code mới nhất về
+            # 2. Nếu thư mục chưa tồn tại, thực hiện clone mới
+            if [ ! -d "$TARGET_DIR" ]; then
+              echo "Thư mục không tồn tại. Đang clone mới..."
+              git clone https://github.com/Du73/portfolio.git "$TARGET_DIR"
+            fi
+            
+            # 3. Vào thư mục và cập nhật code
+            cd "$TARGET_DIR"
             git pull origin main
             
-            # Build và khởi động lại Docker
+            # 4. Build và chạy Docker containers
             sudo docker compose up -d --build
-            
-            # Dọn dẹp các Image cũ để tránh đầy ổ cứng
-            sudo docker image prune -f
