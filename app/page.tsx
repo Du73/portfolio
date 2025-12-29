@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Server, Cloud, Terminal } from 'lucide-react';
+import { ArrowRight, Server, Cloud, Terminal, FileText } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex flex-col items-start justify-center py-12 space-y-8">
       <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
         Hi, I'm <span className="text-blue-600">Nguyen Khanh Huan</span>. <br />
-        Aspiring DevOps Engineer.
+        DevOps Enthusiast focused on AWS, IaC, and CI/CD automation.
       </h1>
       <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
         I bridge the gap between development and operations. Passionate about automating infrastructure, optimizing CI/CD pipelines, and cloud computing.
@@ -25,6 +25,14 @@ export default function Home() {
         <Link href="/blog" className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition flex items-center">
           Read Blog <ArrowRight className="ml-2 h-4 w-4" />
         </Link>
+        <a 
+          href="/cv.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition flex items-center"
+        >
+          View CV <FileText className="ml-2 h-4 w-4" />
+        </a>
         <Link href="/about" className="border border-gray-300 dark:border-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-900 transition">
           More About Me
         </Link>
