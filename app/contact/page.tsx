@@ -26,7 +26,7 @@ export default function Contact() {
           </div>
           <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
             <MapPin className="h-5 w-5 text-blue-600" />
-            <span>Ho Chi Minh City, Vietnam</span>
+            <span>Ho Chi Minh City</span>
           </div>
         </div>
 

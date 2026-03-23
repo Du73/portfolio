@@ -3,7 +3,7 @@ name: Deploy Portfolio to AWS
 on:
   push:
     branches:
-      - main # Tự động chạy khi push code vào nhánh main
+      - main 
 
 jobs:
   deploy:
@@ -23,19 +23,15 @@ jobs:
           script: |
             TARGET_DIR="/home/huan1/portfolio"
             
-            # Nếu thư mục tồn tại nhưng không phải git (lỗi build cũ), xóa sạch
             if [ -d "$TARGET_DIR" ] && [ ! -d "$TARGET_DIR/.git" ]; then
               sudo rm -rf "$TARGET_DIR"
             fi
 
-            # Nếu chưa có thư mục, tiến hành clone mới
             if [ ! -d "$TARGET_DIR" ]; then
               git clone https://github.com/Du73/portfolio.git "$TARGET_DIR"
             fi
             
-            # Di chuyển vào thư mục và cập nhật code
             cd "$TARGET_DIR"
             git pull origin main
             
-            # Chạy Docker (Dùng sudo nếu chưa logout/login lại)
             sudo docker compose up -d --build
